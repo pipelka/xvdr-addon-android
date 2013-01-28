@@ -1,0 +1,17 @@
+obj
+libs
+local.properties
+Makefile
+bin
+autom4te.cache
+*.log
+*.status
+configure
+gen
+.project
+.classpath
+.project make release
+.project make release
+addon.xml
+lint.xml
+ant.properties

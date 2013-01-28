@@ -1,0 +1,43 @@
+Android XVDR addon for XBMC
+---------------------------
+
+This respository creates and installable apk file for android.
+
+Prerequisites:
+
+* Android NDK installed
+* Android SDK installed (Platform Version 10)
+
+
+Cloning the GIT repository:
+
+# git clone --recursive git@github.com:pipelka/xbmc-addon-android.git
+
+
+Preparing the build:
+
+# ./bootstrap
+# ./configure --with-sdk=/path/to/android-sdk --with-ndk=/path/to/android-ndk
+
+This will update the project environment.
+
+
+Building the sources:
+
+# make
+
+This will compile the addon binary and create an installable
+debug apk.
+
+
+Installing on device or emulator:
+
+# make install
+
+This will install and launch the debug version.
+
+
+Registering the addon:
+
+After installation start the "XVDR Addon" app and press "Register Addon".
+This will register the PVR addon in XBMC.

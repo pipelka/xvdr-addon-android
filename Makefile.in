@@ -1,0 +1,48 @@
+NDKROOT=@use_ndk@
+SDKROOT=@use_sdk@
+
+# build all
+
+debug: local.properties addon-data build-ndk
+	ant debug
+
+release: local.properties ant.properties addon-data build-ndk
+	ant release
+
+build-ndk: addon-sources
+	$(NDKROOT)/ndk-build NDK_DEBUG=0
+
+# install
+
+install: local.properties addon-data
+	ant debug install
+
+# create project properties
+
+local.properties:
+	$(SDKROOT)/tools/android update project -p .
+
+# addon data
+
+addon-data: assets/addons/xvdr.zip
+
+addon-data-clean:
+	-rm -Rf assets/addons/pvr.vdr.xvdr
+
+assets/addons/pvr.vdr.xvdr/addon.xml: addon.xml
+	-mkdir -p assets/addons/pvr.vdr.xvdr
+	cp addon.xml assets/addons/pvr.vdr.xvdr
+
+assets/addons/xvdr.zip: addon-sources addon-data-clean assets/addons/pvr.vdr.xvdr/addon.xml addon/addons/pvr.vdr.xvdr/icon.png
+	-rm -f assets/addons/xvdr.zip
+	cp -Rf addon/addons/pvr.vdr.xvdr/resources assets/addons/pvr.vdr.xvdr
+	cp -Rf addon/addons/pvr.vdr.xvdr/icon.png assets/addons/pvr.vdr.xvdr/icon.png
+	cd assets/addons && zip -r xvdr.zip pvr.vdr.xvdr --exclude \*.in
+	make addon-data-clean
+
+# addon sources
+
+addon-sources: addon/README
+
+addon/README:
+	git submodule update --init

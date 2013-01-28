@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">XVDR Addon for XBMC</string>
+    <string name="menu_settings">Settings</string>
+    <string name="app_label">XVDR Addon</string>
+    <string name="addon_register">This little app registers the XVDR addon for XBMC. Press &quot;Register&quot; to register the addon.</string>
+    <string name="addon_alreeady_registered">The XVDR addon is already registered for XBMC on this device.</string>
+    <string name="xbmc_installed">XBMC is installed</string>
+    <string name="xvdr_registered">XVDR addon registered</string>
+    <string name="register_addon">Register Addon</string>
+    <string name="unregister_addon">Unregister Addon</string>
+
+</resources>

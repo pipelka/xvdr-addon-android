@@ -1,0 +1,49 @@
+AC_PREREQ(2.59)
+AC_INIT([xvdr-addon-android])
+AC_CONFIG_FILES([Makefile] [addon.xml])
+
+AC_ARG_VAR(ANDROID_NDK, path to android ndk)
+AC_ARG_VAR(ANDROID_SDK, path to android sdk)
+
+ADDON_VERSION="0.9.7"
+use_ndk=$ANDROID_NDK
+use_sdk=$ANDROID_SDK
+
+AC_ARG_WITH([sdk],
+  [AS_HELP_STRING([--with-sdk],
+  [specify path to android sdk])],
+  [use_sdk=$withval],[if test -z $use_sdk; then AC_MSG_ERROR([No SDK path defined]); fi])
+
+AC_ARG_WITH([ndk],
+  [AS_HELP_STRING([--with-ndk],
+  [specify path to android ndk])],
+  [use_ndk=$withval],[if test -z $use_ndk; then AC_MSG_ERROR([No NDK path defined]); fi])
+
+AC_CHECK_PROG(HAVE_ANT,ant,"yes","no",)
+if test "x$HAVE_ANT" = "xno" ; then
+  AC_MSG_ERROR("Missing build tool: ant")
+fi
+
+AC_CHECK_PROG(HAVE_ZIP,zip,"yes","no",)
+if test "x$HAVE_ZIP" = "xno" ; then
+  AC_MSG_ERROR("Missing program: zip")
+fi
+
+AC_CHECK_PROG(HAVE_GIT,git,"yes","no",)
+if test "x$HAVE_GIT" = "xno" ; then
+  AC_MSG_ERROR("Missing program: git")
+fi
+
+if [ ! test -f $use_sdk/tools/android ]; then
+  AC_MSG_ERROR(verify sdk path)
+fi
+
+if [ ! test -f $use_ndk/ndk-build ]; then
+  AC_MSG_ERROR(verify ndk path)
+fi
+
+AC_SUBST(use_sdk)
+AC_SUBST(use_ndk)
+AC_SUBST(ADDON_VERSION)
+
+AC_OUTPUT
