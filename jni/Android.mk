@@ -13,6 +13,7 @@ LOCAL_SRC_FILES := \
 	../addon/src/libxvdr/src/iso639.cpp \
 	../addon/src/libxvdr/src/os-config.cpp \
 	../addon/src/libxvdr/src/msgpacket.cpp \
+	../addon/src/libxvdr/src/packetbuffer.cpp \
 	../addon/src/libxvdr/src/session.cpp \
 	../addon/src/libxvdr/src/thread.cpp \
 	../addon/src/xvdr/dialogs/GUIDialogBase.cpp \
@@ -24,6 +25,8 @@ LOCAL_SRC_FILES := \
 	../addon/src/xvdr/XBMCSettings.cpp
 
 LOCAL_CFLAGS := \
+	-I$(LOCAL_PATH)/../addon/addons/library.xbmc.addon \
+	-I$(LOCAL_PATH)/../addon/addons/library.xbmc.codec \
 	-I$(LOCAL_PATH)/../addon/src/libxvdr/include \
 	-I$(LOCAL_PATH)/../addon/src/xvdr/include \
 	-I$(LOCAL_PATH)/../addon/src/xvdr/dialogs \
