@@ -24,7 +24,7 @@ public class MainActivity extends Activity {
 
 	protected boolean copyAddonDataToXBMC() {
 		String android_data  = Environment.getExternalStorageDirectory() + "/Android/data";
-		String xbmc_addons = android_data + "/org.xbmc.xbmc/files/.xbmc/addons";
+		String xbmc_addons = android_data + "/org.xbmc.kodi/files/.kodi/addons";
 		
 		InputStream is = null;
 		try {
@@ -79,7 +79,7 @@ public class MainActivity extends Activity {
 	
 	protected boolean haveXBMC() {
 		try {
-			getPackageManager().getApplicationInfo("org.xbmc.xbmc", 0);
+			getPackageManager().getApplicationInfo("org.xbmc.kodi", 0);
 		} catch (NameNotFoundException e) {
 			return false;
 		}
