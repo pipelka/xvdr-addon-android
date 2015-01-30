@@ -9,7 +9,7 @@
   </requires>
   <extension
     point="xbmc.pvrclient"
-    library_android="../../org.xvdr.addon/lib/libxvdraddon.so"/>
+    library_android="../org.xvdr.addon-1/libxvdraddon.so"/>
   <extension point="xbmc.addon.metadata">
     <summary>PVR client to connect VDR to XBMC</summary>
     <description>VDR frontend; supporting streaming of Live TV &amp; Recordings, EPG, Timers</description>
